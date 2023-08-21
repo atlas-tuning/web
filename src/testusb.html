@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>examplepage</title>
+    <script>
+    async function start() 
+    {
+        var device = await window.navigator.usb.requestDevice({
+            filters: [{ vendorId: 0x0403 }]
+        });
+
+        await device.open();
+        await device.selectConfiguration(1);
+        await device.claimInterface(0);
+    }
+    </script>
+  </head>
+  <body>
+   <button onclick="start()">Click me</button> 
+  </body>
+</html>
